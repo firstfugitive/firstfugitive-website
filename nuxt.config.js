@@ -1,4 +1,8 @@
 export default {
+  env: {
+    CTF_PREVIEW: 'true', /* process.env.PREVIEW === 'true' */
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'firstfugitive-website',
