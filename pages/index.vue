@@ -64,19 +64,18 @@ export default {
     return pageEntries;
   },
   methods: {
-    handleMouseDown(e, x, y, width, height) {
+    handleMouseDown(e) {
       e.preventDefault();
-      this.canvas = document.querySelector("canvas");
       var rect = this.canvas.getBoundingClientRect();
       // get the mouse position relative to this.canvas
-      var mouseX = parseInt(e.clientX - rect.left);
-      var mouseY = parseInt(e.clientY - rect.top);
+      var mouseX = Number.parseInt(e.clientX - rect.left);
+      var mouseY = Number.parseInt(e.clientY - rect.top);
 
       if (
-        mouseX >= x &&
-        mouseX <= x + width &&
-        mouseY >= y &&
-        mouseY <= y + height
+        mouseX >= this.cData.x &&
+        mouseX <= this.cData.x + this.cData.width &&
+        mouseY >= this.cData.y &&
+        mouseY <= this.cData.y + this.cData.height
       ) {
         // if inside, display the shape's message
         console.log("Click registered");
@@ -136,9 +135,7 @@ export default {
 
     this.cData = this.animate(this.canvas, this.c, this.cData);
 
-    /* document.querySelector("canvas").mousedown(function (e) {
-      this.handleMouseDown(e, x, y, width, height);
-    }); */
+    document.querySelector("canvas").addEventListener("mousedown", (e) => this.handleMouseDown(e));
   },
 };
 </script>
