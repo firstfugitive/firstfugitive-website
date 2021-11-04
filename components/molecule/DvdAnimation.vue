@@ -1,67 +1,20 @@
 <template>
-  <div>
-    <img id="dvd" src="~/assets/img/dvd.png" usemap="#workmap" alt="Dvd" width="1600" height="712">
-    <canvas></canvas>
-    <div class="texts">
-      <span>Hello World</span>
-      <span>{{ fields.text }}</span>
+    <div>
+        <img id="dvd" src="~/assets/img/dvd.png" usemap="#workmap" alt="Dvd" width="1600" height="712">
+        <canvas></canvas>
     </div>
-  </div>
 </template>
 
 <script>
-import { createClient } from "../plugins/contentful";
-
-const client = createClient();
-
 export default {
-  name: "Home",
+  name: "DvdAnimation",
   data() {
     return {
-      loaded: false,
-      fields: {},
-      metadata: {},
       sys: {},
       canvas: {},
       c: {},
-      cData: {}
+      cData: {},
     };
-  },
-  head() {
-    return {
-      title: `FirstFugitive | Home`,
-      htmlAttrs: {
-        lang: "en",
-      },
-    };
-  },
-  async asyncData(ctx) {
-    //console.log("CTX", ctx);
-
-    const route = ctx.route.path;
-    console.log("route", route);
-
-    return route;
-  },
-  async fetch() {
-    let pageEntries = await client.getEntries({}).then((response) => {
-      const content = response.items[0];
-      this.fields = content.fields;
-      this.metadata = content.metadata;
-      this.sys = content.sys;
-
-      return content;
-    });
-
-    console.log("pageEntries", pageEntries);
-
-    //if page not able to be fetched -> probably 404 error
-    if (!pageEntries) {
-      console.error("Error 404: Page could not be found.");
-      return;
-    }
-
-    return pageEntries;
   },
   methods: {
     handleMouseDown(e) {
@@ -79,7 +32,13 @@ export default {
       ) {
         // if inside, display the shape's message
         console.log("Click registered");
-        this.canvas.getContext("2d").globalAlpha = 0;
+        
+        //make invisible
+        //this.canvas.getContext("2d").globalAlpha = 0;
+
+        //make faster
+        this.cData.dx++;
+        this.cData.dy++;
       }
     },
     animate() {
@@ -124,40 +83,33 @@ export default {
     console.log("context", this.c)
 
     this.cData = {
-      x: 200,
-      y: 200,
-      dx: 8,
-      dy: 8,
-      width: 200,
-      height: 89
+      x: 0,
+      y: 0,
+      dx: 4,
+      dy: 4,
+      width: 100,
+      height: 46
     }
     
 
     this.cData = this.animate(this.canvas, this.c, this.cData);
 
     document.querySelector("canvas").addEventListener("mousedown", (e) => this.handleMouseDown(e));
+    window.addEventListener("resize", (e) => {
+        this.canvas.height = window.innerHeight;
+        this.canvas.width = window.innerWidth;
+    });
   },
 };
 </script>
 
-<style >
+<style scoped>
 
 canvas {
-  display: relative;
-  background: transparent;
-}
-
-body {
-  margin: 0;
+    position:relative;
 }
 
 #dvd {
   display: none;
-}
-
-.texts {
-  position: absolute;
-  top:0;
-  left:0;
 }
 </style>
