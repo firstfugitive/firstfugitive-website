@@ -20,7 +20,7 @@ export default {
   name: "Page",
   head() {
     return {
-      title: `${this.pageTitle} | FirstFugitive`,
+      title: `${this.pageTitle} | Ben Jacobsen`,
       htmlAttrs: {
         lang: "en",
       },
