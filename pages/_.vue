@@ -18,23 +18,15 @@ const client = createClient();
 export default {
   components: { DvdAnimation },
   name: "Page",
-  data() {
-    return {
-      loaded: false,
-      pageTitle: "",
-    };
-  },
   head() {
     return {
-      title: `FirstFugitive | Home`,
+      title: `${this.pageTitle} | FirstFugitive`,
       htmlAttrs: {
         lang: "en",
       },
     };
   },
   async asyncData(ctx) {
-    //console.log("CTX", ctx);
-
     const route = ctx.route.path;
     let pathParts = route.split('/').filter(e => e !== '');
     let slug = pathParts.reverse()[0];
@@ -69,6 +61,9 @@ export default {
     };
   },
   computed: {
+    pageTitle() {
+      return this.pageObject?.fields?.pageTitle;
+    },
     content() {
       if (!this.pageObject?.fields?.content) {
         return [];
@@ -83,7 +78,7 @@ export default {
     },
     text() {
       return this.pageObject?.fields?.text;
-    }
+    },
   }
 };
 </script>

@@ -98,6 +98,8 @@ export default {
     window.addEventListener("resize", (e) => {
         this.canvas.height = window.innerHeight;
         this.canvas.width = window.innerWidth;
+        this.cData.x = 0;
+        this.cData.y = 0;
     });
   },
 };
