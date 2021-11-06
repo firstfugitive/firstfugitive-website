@@ -7,7 +7,6 @@
       :key="`${item.contentType}_${item.sys.id}`"
       :contentTypeId="item.sys.id"
     />
-    <nuxt-link class="link" :to="link">{{ linkText }}</nuxt-link>
   </div>
 </template>
 

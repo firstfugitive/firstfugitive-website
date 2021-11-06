@@ -2,13 +2,15 @@
     <div class="module slider-full-size">
         <img class="" :src="firstImageSrc">
         <div class="slider-full-size__modal">
-            Text
+            <base-link :url="linkUrl" :text="'Home'"></base-link>
         </div>
     </div>
 </template>
 
 <script>
+import BaseLink from '../atom/BaseLink.vue';
 export default {
+    components: { BaseLink },
     name: "SliderFullSize",
     props: {
         data: Object
@@ -22,6 +24,9 @@ export default {
         },
         firstImageSrc() {
             return this.firstImage?.fields?.file?.url;
+        },
+        linkUrl() {
+            return `${"/"}${"home"}`;
         }
     }
 }
@@ -35,7 +40,7 @@ export default {
     width: 100vw;
     position: relative;
 
-    &:before {
+    /* &:before {
         width: 100%;
         display: table;
         content: '';
@@ -47,6 +52,13 @@ export default {
         top: 0;
         width: 100%;
         left: 0;
+    } */
+
+    img {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
     }
 
     &__modal {

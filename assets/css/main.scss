@@ -1,0 +1,147 @@
+@import "assets/css/variables";
+@import "assets/css/placeholder";
+
+@font-face {
+  font-family: "Gill Sans Book";
+  src: local("Gill Sans MT Pro Book"), url(assets/fonts/GillSansMTProBook/font.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gill Sans Medium";
+  src: local("Gill Sans MT Pro Medium"), url(assets/fonts/GillSansMTProMedium/font.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Gill Sans Book", "Arial";
+  letter-spacing: .5px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.u-force-overflow-hidden {
+  overflow: hidden!important;
+}
+
+.u-surline {
+  font-family: "Gill Sans Medium";
+  font-size: 1.125rem;
+  line-height: 1.3em;
+  color: $color-productsup-grey;
+  margin-bottom: 10px;
+
+  @include media-breakpoint-up($device-min-width-desktop) {
+    font-size: 1.25rem;
+  }
+}
+
+.u-subline {
+  font-family: "Gill Sans Medium";
+  font-size: 1.25rem;
+  line-height: 1.3em;
+  color: $color-productsup-grey;
+  margin-bottom: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.u-headline1,
+.u-headline2,
+.u-headline3,
+.u-headline4,
+.u-headline5 {
+  font-family: "Gill Sans Medium";
+  color: $color-headings;
+  letter-spacing: 1.75px;
+  line-height: 1.1em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  &:first-child {
+    margin-top: unset;
+  }
+}
+
+h1,
+.u-headline1 {
+  font-size: 2.125rem;
+
+  @include media-breakpoint-up($device-min-width-tablet) {
+    font-size: 2.625rem;
+  }
+
+  @include media-breakpoint-up($device-min-width-desktop) {
+    font-size: 48px;
+  }
+
+  & + .u-subline {
+    @include media-breakpoint-up($device-min-width-desktop) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+h2,
+.u-headline2 {
+  font-size: 1.75rem;
+
+  @include media-breakpoint-up($device-min-width-desktop) {
+    font-size: 2.25rem;
+  }
+
+  & + .u-subline {
+    @include media-breakpoint-up($device-min-width-desktop) {
+      font-size: 1.375rem;
+    }
+  }
+}
+
+h3,
+.u-headline3 {
+  font-size: 1.5rem;
+
+  @include media-breakpoint-up($device-min-width-desktop) {
+    font-size: 1.875rem;
+  }
+}
+
+h4,
+.u-headline4 {
+  font-size: 1.25rem;
+
+  @include media-breakpoint-up($device-min-width-desktop) {
+    font-size: 1.375rem;
+  }
+}
+
+p,
+.u-paragraph {
+  font-size: 1.125rem;
+  line-height: 1.3em;
+  color: $color-productsup-grey;
+
+  @include media-breakpoint-up($device-min-width-desktop) {
+    font-size: 1.25rem;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: unset;
+  padding-inline-start: unset;
+  padding: unset;
+}
+
