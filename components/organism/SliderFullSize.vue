@@ -1,35 +1,38 @@
 <template>
   <div class="module slider-full-size">
-    <hooper class="slider-full-size__slider"
-			:infiniteScroll="true" 
-			:autoPlay="true" 
-			:playSpeed="7000">
-      <slide>
-        <img class="" :src="firstImageSrc" />
+    <hooper
+      class="slider-full-size__slider"
+      :infiniteScroll="true"
+      :autoPlay="true"
+      :playSpeed="7000"
+    >
+      <slide v-for="image in images" :key="image.sys.id">
+        <img class="" :src="getImageSrc(image)" />
       </slide>
-      <slide>
-        <img class="" :src="secImageSrc" />
-        
-      </slide>
-			
-    	<hooper-pagination slot="hooper-addons"></hooper-pagination>
+
+      <hooper-pagination slot="hooper-addons"></hooper-pagination>
     </hooper>
-		<div class="slider-full-size__modal">
-			<base-link :url="link" :text="linkText"></base-link>
-		</div>
+    <div class="slider-full-size__modal">
+      <base-link :url="link" :text="linkText"></base-link>
+    </div>
   </div>
 </template>
 
 <script>
 import BaseLink from "../atom/BaseLink.vue";
 import { Hooper, Slide, Pagination as HooperPagination } from "hooper";
-import 'hooper/dist/hooper.css';
+import "hooper/dist/hooper.css";
 
 export default {
   components: { BaseLink, Hooper, Slide, HooperPagination },
   name: "SliderFullSize",
   props: {
     data: Object,
+  },
+  methods: {
+    getImageSrc(image) {
+      return image.fields?.file?.url;
+    },
   },
   computed: {
     images() {
@@ -65,47 +68,24 @@ export default {
 
 
 <style lang="scss">
-
 .slider-full-size {
   height: 100vh;
   width: 100vw;
   position: relative;
 
-  /* &:before {
-        width: 100%;
-        display: table;
-        content: '';
-        padding-top: 56.25%;
+  &__slider {
+    height: 100%;
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
     }
 
-    img {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        left: 0;
-    } */
-
-	&__slider {
-		height: 100%;
-		img {
-			display: block;
-			width: 100vw;
-			height: 100vh;
-			object-fit: cover;
-		}
-
-		.hooper-indicator.is-active,
-		.hooper-indicator:hover {
-			background-color: black;
-		}
-	}
-
-  /* img {
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-  } */
+    .hooper-indicator.is-active,
+    .hooper-indicator:hover {
+      background-color: black;
+    }
+  }
 
   &__modal {
     position: absolute;
