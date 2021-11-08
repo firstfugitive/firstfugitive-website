@@ -29,6 +29,7 @@ export default {
 	text-align: center;
 
 	.link {
+		display: block;
 		position: relative;
 		padding: 1rem 2rem;
   	border: 1px solid $color-design-black;
