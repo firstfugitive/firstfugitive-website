@@ -35,8 +35,10 @@ export default {
   	border: 1px solid $color-design-black;
 
     text-decoration: none;
+    color: $color-design-black;
     &:visited {
       color: $color-design-black;
+    	text-decoration: none;
     }
 
 		&::after {
