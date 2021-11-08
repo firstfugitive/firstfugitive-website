@@ -21,7 +21,7 @@
 <script>
 import BaseLink from "../atom/BaseLink.vue";
 import { Hooper, Slide, Pagination as HooperPagination } from "hooper";
-import "hooper/dist/hooper.css";
+/* import "hooper/dist/hooper.css"; */
 
 export default {
   components: { BaseLink, Hooper, Slide, HooperPagination },
