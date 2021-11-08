@@ -14,6 +14,7 @@ export default {
       canvas: {},
       c: {},
       cData: {},
+      animationStopped: false
     };
   },
   methods: {
@@ -42,7 +43,9 @@ export default {
       }
     },
     animate() {
-      window.requestAnimationFrame(this.animate);
+      if(!this.animationStopped) {
+        window.requestAnimationFrame(this.animate);
+      }
       this.c.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       this.c.beginPath();
@@ -102,6 +105,9 @@ export default {
         this.cData.y = 0;
     });
   },
+  beforeDestroy() {
+    this.animationStopped = true;
+  }
 };
 </script>
 
