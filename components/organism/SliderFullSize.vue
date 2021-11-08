@@ -74,7 +74,8 @@ export default {
   position: relative;
 
   &__slider {
-    height: 100%;
+		width: 100vw;
+		height: 100vh;
     img {
       width: 100vw;
       height: 100vh;
