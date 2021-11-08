@@ -2,7 +2,7 @@
   <div>
     <component
       v-for="item in content"
-	  :is="item.contentType"
+	    :is="item.contentType"
       :data="item"
       :key="`${item.contentType}_${item.sys.id}`"
       :contentTypeId="item.sys.id"

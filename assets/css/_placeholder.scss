@@ -1,5 +1,10 @@
 @import "variables";
 
+%fontGotham {
+  font-family: "iCiel Medium", "Arial";
+  letter-spacing: 2.5px;
+}
+
 %teaserCard {
   transition: box-shadow 200ms;
   text-decoration: none;

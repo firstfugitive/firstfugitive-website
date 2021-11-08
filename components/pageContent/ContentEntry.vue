@@ -28,18 +28,6 @@ export default {
           ...i,
           contentType: i?.sys?.contentType?.sys?.id
       }));
-    },
-    link() {
-      let linkObject = this.data?.fields?.link;
-      let slug = linkObject?.fields?.slug;
-      let urlSubfolder = linkObject?.fields?.urlSubfolder?.fields?.path;
-      if(slug && urlSubfolder) {
-        return `${urlSubfolder}${slug}`;
-      }
-      return undefined;
-    },
-    linkText() {
-      return this.data?.fields?.linkText;
     }
   },
 };

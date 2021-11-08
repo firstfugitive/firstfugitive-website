@@ -18,9 +18,38 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "iCiel Thin";
+  src: local("iCiel Thin"), url(assets/fonts/iCielThin/font.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HomepageBaukasten Book";
+  src: local("HomepageBaukasten Book"), url(assets/fonts/HomepageBaukasten/font.woff2) format("woff2"),
+    url(assets/fonts/HomepageBaukasten/font.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "iCiel Medium";
+  src: local("iCiel Medium"), url(assets/fonts/iCielMedium/font.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 html {
   box-sizing: border-box;
-  font-family: "Gill Sans Book", "Arial";
+  //font-family: "Gill Sans Book", "Arial";
+  //font-family: "iCiel Thin", "Arial";
+  font-family: "HomepageBaukasten Book", "Arial";
+  //font-family: "iCiel Medium", "Arial";
   letter-spacing: .5px;
 }
 

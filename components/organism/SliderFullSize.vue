@@ -68,6 +68,9 @@ export default {
 
 
 <style lang="scss">
+
+@import 'assets/css/placeholder.scss';
+
 .slider-full-size {
   height: 100vh;
   width: 100vw;
@@ -93,6 +96,8 @@ export default {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+
+    @extend %fontGotham;
   }
 }
 </style>

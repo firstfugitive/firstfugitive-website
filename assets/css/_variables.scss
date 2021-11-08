@@ -10,6 +10,8 @@ $color-design-dark-blue: #043648;
 
 $color-design-green: #00cb33;
 
+$color-blue: #75b7c5;
+
 $color-design-background: #F5FAFE;
 $color-headings: #1f2732;
 
@@ -34,10 +36,10 @@ $device-min-width-before-header-mobile: calc(#{$device-min-width-desktop} + 354p
 $device-max-width-header-mobile: $device-min-width-before-header-mobile;
 
 :root {
-  --height-header: 64px;
+  --height-header: 44px;
 
   @media (min-width: $device-min-width-before-header-mobile) {
-    --height-header: 80px;
+    --height-header: 60px;
   }
 }
 
