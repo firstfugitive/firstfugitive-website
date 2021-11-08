@@ -38,7 +38,7 @@ html {
   font-family: "Gill Sans Medium";
   font-size: 1.125rem;
   line-height: 1.3em;
-  color: $color-productsup-grey;
+  color: $color-design-grey;
   margin-bottom: 10px;
 
   @include media-breakpoint-up($device-min-width-desktop) {
@@ -50,7 +50,7 @@ html {
   font-family: "Gill Sans Medium";
   font-size: 1.25rem;
   line-height: 1.3em;
-  color: $color-productsup-grey;
+  color: $color-design-grey;
   margin-bottom: 20px;
 }
 
@@ -132,7 +132,7 @@ p,
 .u-paragraph {
   font-size: 1.125rem;
   line-height: 1.3em;
-  color: $color-productsup-grey;
+  color: $color-design-grey;
 
   @include media-breakpoint-up($device-min-width-desktop) {
     font-size: 1.25rem;
