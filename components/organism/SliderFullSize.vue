@@ -10,7 +10,7 @@
         <img class="" :src="getImageSrc(image)" />
       </slide>
 
-      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+      <!-- <hooper-pagination slot="hooper-addons"></hooper-pagination> -->
     </hooper>
     <div class="slider-full-size__modal">
       <base-link :url="link" :text="linkText"></base-link>
@@ -92,7 +92,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 </style>
