@@ -27,29 +27,27 @@ $max-width-tablet-content: 992px;
 $gutter-size: 2rem;
 $header-navigation-gutter-size: calc(#{$gutter-size} - 0.4rem);
 
-$device-max-width-mobile: 575px;
-$device-min-width-tablet: 576px;
-$device-max-width-tablet: 1023px;
-$device-min-width-desktop: 1024px;
+$mobile-max: 575px;
+$tablet-min: 576px;
+$tablet-max: 1023px;
+$desktop-min: 1024px;
 
-$device-min-width-before-header-mobile: calc(#{$device-min-width-desktop} + 354px);
-$device-max-width-header-mobile: $device-min-width-before-header-mobile;
 
 :root {
   --height-header: 44px;
 
-  @media (min-width: $device-min-width-before-header-mobile) {
+  @media (min-width: $tablet-min) {
     --height-header: 60px;
   }
 }
 
-@mixin media-breakpoint-less-than($width) {
+@mixin mb-down($width) {
   @media (max-width: $width) {
     @content;
   }
 }
 
-@mixin media-breakpoint-up($width) {
+@mixin mb-up($width) {
   @media (min-width: $width) {
     @content;
   }
@@ -68,44 +66,44 @@ $device-max-width-header-mobile: $device-min-width-before-header-mobile;
   border-radius: 8px;
 }
 
-@mixin set-module-width {
+/* @mixin set-module-width {
   margin-left: auto;
   margin-right: auto;
 
-  @include media-breakpoint-up($device-min-width-tablet) {
+  @include mb-up($device-min-width-tablet) {
     max-width: $max-width-tablet;
   }
 
-  @include media-breakpoint-up($device-min-width-desktop) {
+  @include mb-up($device-min-width-desktop) {
     max-width: $max-width-desktop;
   }
-}
+} */
 
-@mixin set-module-paddings {
+/* @mixin set-module-paddings {
   @include media-breakpoint-less-than($device-max-width-mobile) {
     padding-top: 40px;
     padding-bottom: 40px;
   }
 
-  @include media-breakpoint-up($device-min-width-tablet) {
+  @include mb-up($device-min-width-tablet) {
     padding-top: 60px;
     padding-bottom: 60px;
   }
 
-  @include media-breakpoint-up($device-min-width-desktop) {
+  @include mb-up($device-min-width-desktop) {
     padding-top: 75px;
     padding-bottom: 75px;
   }
-}
+} */
 
-@mixin set-module-content-width {
+/* @mixin set-module-content-width {
   @include media-breakpoint-less-than($device-min-width-desktop) {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 
-  @include media-breakpoint-up($device-min-width-desktop) {
+  @include mb-up($device-min-width-desktop) {
     padding-left: calc((#{$max-width-desktop} - #{$max-width-desktop-content}) / 2);
     padding-right: calc((#{$max-width-desktop} - #{$max-width-desktop-content}) / 2);
   }
-}
+} */

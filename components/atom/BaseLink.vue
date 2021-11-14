@@ -32,12 +32,12 @@ export default {
 		display: block;
 		position: relative;
 		padding: 1rem 2rem;
-  	border: 1px solid $color-design-black;
+  	border: 1px solid $color-white;
 
     text-decoration: none;
-    color: $color-design-black;
+    color: $color-white;
     &:visited {
-      color: $color-design-black;
+      color: $color-white;
     	text-decoration: none;
     }
 
