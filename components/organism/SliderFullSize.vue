@@ -13,9 +13,7 @@
 
       <!-- <hooper-pagination slot="hooper-addons"></hooper-pagination> -->
     </hooper>
-    <div class="slider-full-size__modal">
-      <base-button :url="link" :text="linkText"></base-button>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -52,18 +50,6 @@ export default {
     secImageSrc() {
       return this.secImage?.fields?.file?.url;
     },
-    link() {
-      let linkObject = this.data?.fields?.link;
-      let slug = linkObject?.fields?.slug;
-      let urlSubfolder = linkObject?.fields?.urlSubfolder?.fields?.path;
-      if (slug && urlSubfolder) {
-        return `${urlSubfolder}${slug}`;
-      }
-      return undefined;
-    },
-    linkText() {
-      return this.data?.fields?.linkText;
-    },
   },
 };
 </script>
@@ -93,13 +79,6 @@ export default {
     }
   }
 
-  &__modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-
-    @extend %fontGotham;
-  }
+  
 }
 </style>
