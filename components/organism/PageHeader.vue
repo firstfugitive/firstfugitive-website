@@ -132,13 +132,14 @@ export default {
     left: 0;
     background-color: $color-transparent-white;
     width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-    transition: opacity 0.5s ease-out;
+    height: 0vh;
+    overflow: hidden;
+    transition: height 0.5s ease-out, opacity 0.5s ease-out;
     opacity: 0;
 
     &--active {
       opacity: 1;
+      height: 100vh;
 
       .page-header__menu-element {
         opacity: 1;
