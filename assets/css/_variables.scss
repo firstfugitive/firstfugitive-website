@@ -38,10 +38,10 @@ $desktop-min: 1024px;
 
 
 :root {
-  --height-header: 44px;
+  --height-header: 54px;
 
   @media (min-width: $tablet-min) {
-    --height-header: 60px;
+    --height-header: 80px;
   }
 }
 

@@ -8,17 +8,19 @@
         <ul class="page-header__elements">
           <li>{{title}}</li>
         </ul>
-        <svg 
+        <div 
           @click="activateMenu"
-          class="page-header__menu-icon" 
-          width="20" height="20" viewBox="0 0 20 20">
-          <title>
-            dots
-          </title>
-          <circle cx="10" cy="10" r="2"/>
-          <circle cx="3" cy="10" r="2"/>
-          <circle cx="17" cy="10" r="2"/>
-        </svg>
+          class="page-header__menu-button" >
+          <svg width="20" height="20" viewBox="0 0 20 20"
+            class="page-header__menu-icon">
+            <title>
+              dots
+            </title>
+            <circle cx="10" cy="10" r="2"/>
+            <circle cx="3" cy="10" r="2"/>
+            <circle cx="17" cy="10" r="2"/>
+          </svg>
+        </div>
         <div :class="['page-header__menu', {'page-header__menu--active': menuActive}]">
           <ul class="page-header__menu-navigation">
             <li class="page-header__menu-element"
@@ -107,10 +109,14 @@ export default {
     height: 100px;
   }
 
-  &__menu-icon {
-    fill: $color-white;
+  &__menu-button {
     z-index: 102;
     cursor: pointer;
+  }
+
+  &__menu-icon {
+    margin: 0.5rem;
+    fill: $color-white;
 
     @include mb-up($tablet-min) {
       height: 30px;
@@ -124,13 +130,14 @@ export default {
     top: 0;
     left: 0;
     background-color: $color-transparent-white;
-    width: 0vw;
+    width: 100vw;
     height: 100vh;
     overflow-x: hidden;
-    transition: width 0.5s ease-out;
+    transition: opacity 0.5s ease-out;
+    opacity: 0;
 
     &--active {
-      width: 100vw;
+      opacity: 1;
 
       .page-header__menu-element {
         opacity: 1;
@@ -147,7 +154,7 @@ export default {
     &-element {
       padding: 1rem 0;
       color: $color-design-grey;
-      transition: opacity 0.3s ease-out;
+      transition: opacity 0.8s ease-out;
       opacity: 0;
     }
   }
