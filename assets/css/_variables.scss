@@ -20,7 +20,7 @@ $color-soft-white: rgba(255,255,255,0.8);
 $color-transparent-white: rgba(255,255,255,0.9);
 
 $dark-text: $color-design-grey;
-$bright-text: $color-white;
+$bright-text: $color-soft-white;
 
 
 $max-width-desktop: 1440px;
@@ -38,10 +38,20 @@ $desktop-min: 1024px;
 
 
 :root {
-  --height-header: 54px;
+  --height-header: 74px;
 
   @media (min-width: $tablet-min) {
-    --height-header: 80px;
+    --height-header: 100px;
+  }
+
+  --module-max-content-width: 80%;
+
+  @media (min-width: $tablet-min) {
+    --module-max-content-width: 70%;
+  }
+
+  @media (min-width: $desktop-min) {
+    --module-max-content-width: 60%;
   }
 }
 

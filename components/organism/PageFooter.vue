@@ -1,6 +1,6 @@
 <template>
     <footer class="page-footer">
-        Footer
+      © Ben Jacobsen 2021
     </footer>
 </template>
 
@@ -17,5 +17,7 @@ export default {
 .page-footer {
   text-align: center;
   padding: 1rem 5rem;
+  background-color: $color-design-grey;
+  color: $bright-text;
 }
 </style>

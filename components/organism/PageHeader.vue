@@ -106,7 +106,8 @@ export default {
     background-size: contain;
     background-repeat: repeat-x;
     width: 100%;
-    height: 100px;
+    //height: calc(var(--height-header) + 20px);
+    height: var(--height-header);
   }
 
   &__menu-button {

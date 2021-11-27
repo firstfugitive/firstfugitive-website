@@ -22,6 +22,9 @@ export default {
 
 .text-module {
   text-align: center;
-  padding: 4rem 5rem;
+  padding: 4rem 0;
+  margin: 0 auto;
+  max-width: var(--module-max-content-width);
+  color: $dark-text;
 }
 </style>
