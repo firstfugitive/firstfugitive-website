@@ -10,9 +10,9 @@
         </ul>
         <div 
           @click="activateMenu"
-          class="page-header__menu-button" >
+          class="page-header__menu-button"  >
           <svg width="20" height="20" viewBox="0 0 20 20"
-            class="page-header__menu-icon">
+            :class="['page-header__menu-icon', {'page-header__menu-icon--active': menuActive}]">
             <title>
               dots
             </title>
@@ -113,6 +113,8 @@ export default {
   &__menu-button {
     z-index: 102;
     cursor: pointer;
+
+    
   }
 
   &__menu-icon {
@@ -122,6 +124,10 @@ export default {
     @include mb-up($tablet-min) {
       height: 30px;
       width: 30px;
+    }
+
+    &--active {
+      fill: $color-design-grey;
     }
   }
 
@@ -144,10 +150,13 @@ export default {
       .page-header__menu-element {
         opacity: 1;
       }
+
+      .page-header__menu-icon {
+        fill: $color-design-grey;
+      }
     }
 
     &-navigation {
-      
       max-width: 52%;
       margin: var(--height-header) auto 2rem auto;
       text-align: center;
@@ -158,6 +167,8 @@ export default {
       color: $color-design-grey;
       transition: opacity 0.8s ease-out;
       opacity: 0;
+      
+      @extend %fontBig;
     }
   }
 

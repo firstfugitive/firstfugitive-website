@@ -5,6 +5,14 @@
   letter-spacing: 2.5px;
 }
 
+%fontBig {
+  font-size: 1.25rem;
+
+  @include mb-up($desktop-min) {
+    font-size: 1.7rem;
+  }
+}
+
 %teaserCard {
   transition: box-shadow 200ms;
   text-decoration: none;
