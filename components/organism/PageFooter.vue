@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <footer class="page-footer">
         Footer
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -10,3 +10,12 @@ export default {
 }
 
 </script>
+
+<style lang="scss" >
+@import "assets/css/variables";
+
+.page-footer {
+  text-align: center;
+  padding: 1rem 5rem;
+}
+</style>

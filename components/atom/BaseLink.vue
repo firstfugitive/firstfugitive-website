@@ -1,7 +1,5 @@
 <template>
-  <div class="base-link">
-    <nuxt-link class="link" :to="url">{{ text }}</nuxt-link>
-  </div>
+  <nuxt-link :class="['base-link', {'base-link--dark': darkStyle}]" :to="url">{{ text }}</nuxt-link>
 </template>
 
 <script>
@@ -16,6 +14,10 @@ export default {
       type: String,
       required: true,
     },
+    darkStyle: {
+      type: Boolean,
+      required: false
+    }
   },
 };
 </script>
@@ -25,36 +27,18 @@ export default {
 @import "assets/css/variables";
 
 .base-link {
-  position: relative;
-	text-align: center;
-
-	.link {
-		display: block;
-		position: relative;
-		padding: 1rem 2rem;
-  	border: 1px solid $color-white;
-
+  text-decoration: none;
+  color: $bright-text;
+  &:visited {
+    color: $bright-text;
     text-decoration: none;
-    color: $color-white;
-    &:visited {
-      color: $color-white;
-    	text-decoration: none;
-    }
+  }
 
-		&::after {
-			content: '';
-			position: absolute;
-			z-index: -1;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 0%;
-			transition: height 0.5s;
-			background-color: $color-transparent-white;
-		}
-		&:hover::after {
-			height: 100%;
-		}
+  &--dark {
+    color: $dark-text;
+    &:visited {
+      color: $dark-text;
+    }
   }
 }
 </style>

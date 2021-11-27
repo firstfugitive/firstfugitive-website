@@ -4,7 +4,8 @@
       class="slider-full-size__slider"
       :infiniteScroll="true"
       :autoPlay="true"
-      :playSpeed="7000"
+      :playSpeed="4000"
+      :wheelControl="false"
     >
       <slide v-for="image in images" :key="image.sys.id">
         <img class="" :src="getImageSrc(image)" />
@@ -13,7 +14,7 @@
       <!-- <hooper-pagination slot="hooper-addons"></hooper-pagination> -->
     </hooper>
     <div class="slider-full-size__modal">
-      <base-link :url="link" :text="linkText"></base-link>
+      <base-button :url="link" :text="linkText"></base-button>
     </div>
   </div>
 </template>
@@ -21,10 +22,11 @@
 <script>
 import BaseLink from "../atom/BaseLink.vue";
 import { Hooper, Slide, Pagination as HooperPagination } from "hooper";
+import BaseButton from '../atom/BaseButton.vue';
 /* import "hooper/dist/hooper.css"; */
 
 export default {
-  components: { BaseLink, Hooper, Slide, HooperPagination },
+  components: { BaseLink, Hooper, Slide, HooperPagination, BaseButton },
   name: "SliderFullSize",
   props: {
     data: Object,

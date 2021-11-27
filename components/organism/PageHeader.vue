@@ -20,7 +20,16 @@
           <circle cx="17" cy="10" r="2"/>
         </svg>
         <div :class="['page-header__menu', {'page-header__menu--active': menuActive}]">
-          
+          <ul class="page-header__menu-navigation">
+            <li class="page-header__menu-element"
+              v-for="(elem, i) in navigationElements"
+              :key="`navElem_${i}`">
+              <base-link 
+                :url="getNavElementUrl(elem)" 
+                :text="getNavElementUrlText(elem)"
+                :darkStyle="true"></base-link>
+            </li>
+          </ul>
         </div>
       </header>
     </div>
@@ -28,7 +37,9 @@
 </template>
 
 <script>
+import BaseLink from '../atom/BaseLink.vue';
 export default {
+  components: { BaseLink },
   name: "Header",
   props: {
     data: Object,
@@ -43,12 +54,25 @@ export default {
       e.preventDefault();
       console.log('Hello');
       this.menuActive = !this.menuActive;
+    },
+    getNavElementUrl(element) {
+      let link = element?.fields?.link?.fields;
+      return `${link?.urlSubfolder?.fields?.path}${link?.slug}`;
+    },
+    getNavElementUrlText(element) {
+      return element?.fields?.title;
     }
   },
   computed: {
     title() {
       return this.data?.fields?.title;
-    }
+    },
+    navigationElements() {
+      return this.data?.fields?.navigationElements;
+    },
+    navigationElements() {
+      return this.data?.fields?.navigationElements;
+    },
   }
 }
 
@@ -86,6 +110,7 @@ export default {
   &__menu-icon {
     fill: $color-white;
     z-index: 102;
+    cursor: pointer;
 
     @include mb-up($tablet-min) {
       height: 30px;
@@ -98,7 +123,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: $color-soft-white;
+    background-color: $color-transparent-white;
     width: 0vw;
     height: 100vh;
     overflow-x: hidden;
@@ -106,6 +131,24 @@ export default {
 
     &--active {
       width: 100vw;
+
+      .page-header__menu-element {
+        opacity: 1;
+      }
+    }
+
+    &-navigation {
+      
+      max-width: 52%;
+      margin: var(--height-header) auto 2rem auto;
+      text-align: center;
+    }
+
+    &-element {
+      padding: 1rem 0;
+      color: $color-design-grey;
+      transition: opacity 0.3s ease-out;
+      opacity: 0;
     }
   }
 
