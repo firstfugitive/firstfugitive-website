@@ -1,5 +1,5 @@
 <template>
-  <div class="module page-header">
+  <div class="page-header">
     <div class="page-header__wrapper">
       <div class="page-header__bg">
         <div class="page-header__gradient"></div>
@@ -131,6 +131,31 @@ export default {
     }
   }
 
+  header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: $color-white;
+    padding: 2rem 3rem;
+    font-size: 1rem;
+
+    @include mb-down($mobile-max) {
+      font-size: 0.7rem;
+      padding: 1.4rem 1.8rem;
+    }
+  }
+
+  &__elements {
+    flex-grow: 1;
+
+    & > li {
+      @extend %fontGotham;
+    }
+  }
+
   &__menu {
     z-index: 101;
     position: absolute;
@@ -169,31 +194,6 @@ export default {
       opacity: 0;
       
       @extend %fontBig;
-    }
-  }
-
-  header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: $color-white;
-    padding: 2rem 3rem;
-
-    @include mb-down($mobile-max) {
-      font-size: 0.7rem;
-      padding: 1.4rem 1.8rem;
-    }
-
-  }
-
-  &__elements {
-    flex-grow: 1;
-
-    & > li {
-      @extend %fontGotham;
     }
   }
 }

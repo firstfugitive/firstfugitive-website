@@ -1,0 +1,159 @@
+@import "variables";
+
+@font-face {
+  font-family: "Gill Sans Book";
+  src: local("Gill Sans MT Pro Book"), url(assets/fonts/GillSansMTProBook/font.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gill Sans Medium";
+  src: local("Gill Sans MT Pro Medium"), url(assets/fonts/GillSansMTProMedium/font.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "iCiel Thin";
+  src: local("iCiel Thin"), url(assets/fonts/iCielThin/font.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HomepageBaukasten Book";
+  src: local("HomepageBaukasten Book"), url(assets/fonts/HomepageBaukasten/font.woff2) format("woff2"),
+    url(assets/fonts/HomepageBaukasten/font.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "iCiel Medium";
+  src: local("iCiel Medium"), url(assets/fonts/iCielMedium/font.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+html {
+  box-sizing: border-box;
+  //font-family: "Gill Sans Book", "Arial";
+  //font-family: "iCiel Thin", "Arial";
+  font-family: "HomepageBaukasten Book", "Arial";
+  //font-family: "iCiel Medium", "Arial";
+  letter-spacing: .5px;
+  color: $dark-text;
+
+}
+
+
+p {
+  margin: 0;
+  padding: 0;
+  @extend %fontStandard;
+  /* font-size: 1.125rem;
+  line-height: 1.3em;
+  color: $color-design-grey;
+
+  @include mb-up($desktop-min) {
+    font-size: 1.25rem;
+  } */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.u-headline1,
+.u-headline2,
+.u-headline3,
+.u-headline4,
+.u-headline5 {
+  font-family: "Gill Sans Medium";
+  color: $color-headings;
+  letter-spacing: 1.75px;
+  line-height: 1.1em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  &:first-child {
+    margin-top: unset;
+  }
+}
+
+h1,
+.u-headline1 {
+  font-size: 2.125rem;
+
+  @include mb-up($tablet-min) {
+    font-size: 2.625rem;
+  }
+
+  @include mb-up($desktop-min) {
+    font-size: 48px;
+  }
+
+  & + .u-subline {
+    @include mb-up($desktop-min) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+h2,
+.u-headline2 {
+  font-size: 1.75rem;
+
+  @include mb-up($desktop-min) {
+    font-size: 2.25rem;
+  }
+
+  & + .u-subline {
+    @include mb-up($desktop-min) {
+      font-size: 1.375rem;
+    }
+  }
+}
+
+h3,
+.u-headline3 {
+  font-size: 1.5rem;
+
+  @include mb-up($desktop-min) {
+    font-size: 1.875rem;
+  }
+}
+
+h4,
+.u-headline4 {
+  font-size: 1.25rem;
+
+  @include mb-up($desktop-min) {
+    font-size: 1.375rem;
+  }
+}
+
+
+ul {
+  list-style: none;
+  margin: unset;
+  padding-inline-start: unset;
+  padding: unset;
+}
+

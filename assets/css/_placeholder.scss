@@ -5,11 +5,25 @@
   letter-spacing: 2.5px;
 }
 
+%fontStandard {
+  font-size: 1rem;
+  @include mb-up($desktop-min) {
+    font-size: 1.25rem;
+  }
+}
+
 %fontBig {
   font-size: 1.25rem;
 
   @include mb-up($desktop-min) {
     font-size: 1.7rem;
+  }
+}
+
+%fontVeryBig {
+  font-size: 2.2rem;
+  @include mb-up($desktop-min) {
+    font-size: 3rem;
   }
 }
 

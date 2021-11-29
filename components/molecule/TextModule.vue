@@ -1,9 +1,15 @@
 <template>
-  <div class="text-module">{{ text }}</div>
+  <div 
+    :class="['module text-module', {'text-module--big': big}, {'text-module--bold': bold}, {'text-module--gotham': gotham}]"
+    :style="`text-align: ${align}`">
+    {{ text }}
+  </div>
 </template>
 
 <script>
+import MarkdownText from './MarkdownText.vue';
 export default {
+  components: { MarkdownText },
   name: "TextModule",
   props: {
     data: Object,
@@ -12,6 +18,18 @@ export default {
     text() {
       return this.data?.fields?.text;
     },
+    align() {
+      return this.data?.fields?.align;
+    },
+    big() {
+      return this.data?.fields?.big;
+    },
+    bold() {
+      return this.data?.fields?.bold;
+    },
+    gotham() {
+      return this.data?.fields?.gotham;
+    },
   },
 };
 </script>
@@ -19,12 +37,20 @@ export default {
 
 <style lang="scss" >
 @import "assets/css/variables";
+@import 'assets/css/placeholder.scss';
 
 .text-module {
-  text-align: center;
-  padding: 4rem 0;
-  margin: 0 auto;
-  max-width: var(--module-max-content-width);
-  color: $dark-text;
+  &--big {
+    @extend %fontVeryBig;
+  }
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  &--gotham {
+    @extend %fontGotham;
+  }
+
 }
 </style>

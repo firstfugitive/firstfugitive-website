@@ -17,7 +17,8 @@ export default {
 .page-footer {
   text-align: center;
   padding: 1rem 5rem;
-  background-color: $color-design-grey;
-  color: $bright-text;
+  background-color: $color-white;
+  color: $dark-text;
+  font-size: 1rem;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="module slider-full-size">
+  <div class="slider-full-size">
     <hooper
       class="slider-full-size__slider"
       :infiniteScroll="true"
@@ -18,13 +18,10 @@
 </template>
 
 <script>
-import BaseLink from "../atom/BaseLink.vue";
 import { Hooper, Slide, Pagination as HooperPagination } from "hooper";
-import BaseButton from '../atom/BaseButton.vue';
-/* import "hooper/dist/hooper.css"; */
 
 export default {
-  components: { BaseLink, Hooper, Slide, HooperPagination, BaseButton },
+  components: { Hooper, Slide, HooperPagination },
   name: "SliderFullSize",
   props: {
     data: Object,
@@ -37,18 +34,6 @@ export default {
   computed: {
     images() {
       return this.data?.fields?.items;
-    },
-    firstImage() {
-      return this.images ? this.images[0] : undefined;
-    },
-    firstImageSrc() {
-      return this.firstImage?.fields?.file?.url;
-    },
-    secImage() {
-      return this.images ? this.images[1] : undefined;
-    },
-    secImageSrc() {
-      return this.secImage?.fields?.file?.url;
     },
   },
 };
