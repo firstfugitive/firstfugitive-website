@@ -1,6 +1,14 @@
+import PathsGenerator from './assets/js/PathsGenerator';
+
 export default {
   env: {
     CTF_PREVIEW: 'true', /* process.env.PREVIEW === 'true' */
+  },
+
+  generate: {
+    routes: PathsGenerator.generatePaths,
+    concurrency: 100,
+    crawler: false
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
