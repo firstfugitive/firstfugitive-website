@@ -6,7 +6,13 @@
       </div>
       <header class="">
         <ul class="page-header__elements">
-          <li>{{title}}</li>
+          <li>
+            <base-link 
+              :url="linkHome" 
+              :text=title
+
+            ></base-link>
+          </li>
         </ul>
         <div 
           @click="activateMenu"
@@ -40,6 +46,7 @@
 
 <script>
 import BaseLink from '../atom/BaseLink.vue';
+import { getUrlFromPage } from '../../assets/js/Util.js';
 export default {
   components: { BaseLink },
   name: "Header",
@@ -58,19 +65,21 @@ export default {
       this.menuActive = !this.menuActive;
     },
     getNavElementUrl(element) {
-      let link = element?.fields?.link?.fields;
-      return `${link?.urlSubfolder?.fields?.path}${link?.slug}`;
+      let linkPage = element?.fields?.link;
+      return getUrlFromPage(linkPage);
     },
     getNavElementUrlText(element) {
       return element?.fields?.title;
-    }
+    },
+
   },
   computed: {
     title() {
       return this.data?.fields?.title;
     },
-    navigationElements() {
-      return this.data?.fields?.navigationElements;
+    linkHome() {
+      let linkPage = this.data?.fields?.linkHome;
+      return getUrlFromPage(linkPage);
     },
     navigationElements() {
       return this.data?.fields?.navigationElements;
