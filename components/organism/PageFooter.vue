@@ -1,6 +1,6 @@
 <template>
     <footer class="page-footer">
-      © Ben Jacobsen 2021
+      © Ben Jacobsen 2022
     </footer>
 </template>
 
