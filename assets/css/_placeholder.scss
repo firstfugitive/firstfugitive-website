@@ -21,9 +21,9 @@
 }
 
 %fontVeryBig {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   @include mb-up($desktop-min) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 

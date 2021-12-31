@@ -1,12 +1,20 @@
 <template>
     <footer class="page-footer">
-      © Ben Jacobsen 2022
+      {{ copyright }}
     </footer>
 </template>
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
+  props: {
+    data: Object,
+  },
+  computed: {
+    copyright() {
+      return this.data?.fields?.copyright;
+    },
+  }
 }
 
 </script>
