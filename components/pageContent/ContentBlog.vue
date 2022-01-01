@@ -48,7 +48,7 @@ export default {
     title() {
       return this.data?.fields?.title;
     }
-  },
+  }
 };
 </script>
 

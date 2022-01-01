@@ -1,10 +1,8 @@
 <template>
   <div>
     <component
-      v-for="(item) in content"
-      :is="item.contentType"
-      :data="item"
-      :key="`${item.contentType}_${item.sys.id}`"
+      :is="contentType"
+      :data="pageContent"
     />
   </div>
 </template>
@@ -64,7 +62,12 @@ export default {
     pageTitle() {
       return this.pageObject?.fields?.pageTitle;
     },
-    content() {
+
+    pageContent() {
+      if (!this.pageObject?.fields?.content) {
+        return undefined;
+      }
+      return this.pageObject.fields.content;
       if (!this.pageObject?.fields?.content) {
         return [];
       }
@@ -76,9 +79,9 @@ export default {
           contentType: i?.sys?.contentType?.sys?.id
       }));
     },
-    text() {
-      return this.pageObject?.fields?.text;
-    },
+    contentType() {
+      return this.pageContent?.sys?.contentType?.sys?.id;
+    }
   }
 };
 </script>
