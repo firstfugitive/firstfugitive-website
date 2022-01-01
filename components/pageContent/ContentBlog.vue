@@ -66,7 +66,7 @@ export default {
     background-color: $color-transparent-white;
     //border: 1px solid $color-design-black;
     @extend %borderRadius;
-    padding: 20% 10%;
+    padding: 8% 10%;
     @include mb-up($tablet-min) {
       padding: 2rem 3rem;
     }
