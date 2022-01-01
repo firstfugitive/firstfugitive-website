@@ -4,6 +4,10 @@
   border-radius: 50px;
 }
 
+%boxShadow {
+  box-shadow: 0 5px 12px 1px rgba(0,0,0,0.07);
+}
+
 %fontGotham {
   font-family: "iCiel Medium", "Arial";
   letter-spacing: 2.5px;

@@ -11,7 +11,7 @@ export default BlogService;
 async function fetchAll(descending = false) {
   let result = await client.getEntries({
     content_type: 'page',
-    'fields.content[0].sys.contentType.sys.id': 'pageContentHome',
+    'fields.content.sys.contentType.sys.id': 'pageContentBlog',
     limit: 1000
   }).then((res) => res.items);
 

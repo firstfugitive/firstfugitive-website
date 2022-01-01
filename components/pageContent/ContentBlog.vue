@@ -63,7 +63,7 @@ export default {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 
-    background-color: $color-transparent-white;
+    background-color: $color-soft-white;
     //border: 1px solid $color-design-black;
     @extend %borderRadius;
     padding: 8% 10%;
