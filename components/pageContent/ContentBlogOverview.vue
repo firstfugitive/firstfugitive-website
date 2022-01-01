@@ -88,6 +88,7 @@ export default {
   }
   &__blogs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     @include mb-down($mobile-max) {
@@ -104,6 +105,9 @@ export default {
     &:visited {
       color: $dark-text;
       text-decoration: none;
+    }
+    &:hover {
+
     }
     img {
       max-width: 100%;
