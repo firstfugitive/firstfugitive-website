@@ -16,6 +16,8 @@
 
 <script>
 import BaseButton from '../atom/BaseButton.vue';
+import { getUrlFromPage } from '../../assets/js/Util.js';
+
 export default {
   components: { BaseButton },
   name: "ContentEntry",
@@ -37,12 +39,7 @@ export default {
     },
     link() {
       let linkObject = this.data?.fields?.link;
-      let slug = linkObject?.fields?.slug;
-      let urlSubfolder = linkObject?.fields?.urlSubfolder?.fields?.path;
-      if (slug && urlSubfolder) {
-        return `${urlSubfolder}${slug}`;
-      }
-      return undefined;
+      return getUrlFromPage(linkObject);
     },
     linkText() {
       return this.data?.fields?.linkText;
@@ -63,11 +60,11 @@ export default {
 }
 
 .content-entry__button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 
-    @extend %fontGotham;
-  }
+  @extend %fontGotham;
+}
 </style>

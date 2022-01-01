@@ -10,7 +10,6 @@
             <base-link 
               :url="linkHome" 
               :text=title
-
             ></base-link>
           </li>
         </ul>

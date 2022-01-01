@@ -58,7 +58,13 @@ html {
   //font-family: "iCiel Medium", "Arial";
   letter-spacing: .5px;
   color: $dark-text;
-
+  line-height: 1.6rem;
+  @include mb-up($tablet-min) {
+    line-height: 1.8rem;
+  }
+  @include mb-up($desktop-min) {
+    line-height: 2rem;
+  }
 }
 
 

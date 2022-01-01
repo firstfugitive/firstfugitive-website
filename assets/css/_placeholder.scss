@@ -1,12 +1,26 @@
 @import "variables";
 
+%borderRadius {
+  border-radius: 25px;
+}
+
 %fontGotham {
   font-family: "iCiel Medium", "Arial";
   letter-spacing: 2.5px;
+  line-height: 2rem;
+  @include mb-up($tablet-min) {
+    line-height: 2.2rem;
+  }
+  @include mb-up($desktop-min) {
+    line-height: 2.8rem;
+  }
 }
 
 %fontStandard {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  @include mb-up($tablet-min) {
+    font-size: 1.1rem;
+  }
   @include mb-up($desktop-min) {
     font-size: 1.25rem;
   }
@@ -14,7 +28,9 @@
 
 %fontBig {
   font-size: 1.25rem;
-
+  @include mb-up($tablet-min) {
+    font-size: 1.5rem;
+  }
   @include mb-up($desktop-min) {
     font-size: 1.7rem;
   }
@@ -22,6 +38,9 @@
 
 %fontVeryBig {
   font-size: 1.6rem;
+  @include mb-up($tablet-min) {
+    font-size: 2rem;
+  }
   @include mb-up($desktop-min) {
     font-size: 2.5rem;
   }

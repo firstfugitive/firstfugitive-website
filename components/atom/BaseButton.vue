@@ -24,8 +24,29 @@ export default {
 
 
 <style lang="scss" >
-@import "assets/css/variables";
+@import 'assets/css/variables';
+@import 'assets/css/placeholder.scss';
 
+.base-button {
+	position: relative;
+	text-align: center;
+
+  .link {
+    display: block;
+    position: relative;
+    padding: 1rem 2rem;
+    border: 1px solid $color-white;
+    @extend %borderRadius;
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: $color-soft-white;
+    }
+  }
+}
+
+/* 
+style: transparent, border, animation
 .base-button {
   position: relative;
 	text-align: center;
@@ -51,5 +72,5 @@ export default {
 			height: 100%;
 		}
   }
-}
+} */
 </style>

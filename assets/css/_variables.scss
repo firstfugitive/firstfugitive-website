@@ -35,6 +35,7 @@ $mobile-max: 575px;
 $tablet-min: 576px;
 $tablet-max: 1023px;
 $desktop-min: 1024px;
+$desktop-extended: 1440px;
 
 
 :root {
@@ -52,6 +53,10 @@ $desktop-min: 1024px;
 
   @media (min-width: $desktop-min) {
     --module-max-content-width: 60%;
+  }
+
+  @media (min-width: $desktop-extended) {
+    --module-max-content-width: 40%;
   }
 }
 
