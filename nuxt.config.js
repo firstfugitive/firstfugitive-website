@@ -2,6 +2,18 @@ import PathsGenerator from './assets/js/PathsGenerator';
 import path from 'path'
 import fs from 'fs'
 
+function checkFileExists(file) {
+  var file = undefined;
+  try {
+    file = fs.existsSync(file);
+  } catch(e) {
+    //file does not exist
+  }
+  return file !== undefined;
+}
+
+var filesFound = checkFileExists(process.env.CERT_PATH+'privkey.pem');
+
 export default {
   env: {
     CTF_PREVIEW: 'true', /* process.env.PREVIEW === 'true' */
@@ -70,7 +82,10 @@ export default {
   },
 
   server: 
-  process.env.NODE_ENV === 'production' ? {
+  process.env.NODE_ENV !== 'production' 
+    && filesFound !== undefined 
+    && false ? 
+    {
     https: {
       key: fs.readFileSync(path.resolve(process.env.CERT_PATH, 'privkey.pem')),
       cert: fs.readFileSync(path.resolve(process.env.CERT_PATH, 'cert.pem'))
