@@ -1,4 +1,6 @@
 import PathsGenerator from './assets/js/PathsGenerator';
+import path from 'path'
+import fs from 'fs'
 
 export default {
   env: {
@@ -65,5 +67,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  server: 
+  process.env.NODE_ENV === 'production' ? {
+    https: {
+      key: fs.readFileSync(path.resolve(process.env.CERT_PATH, 'privkey.pem')),
+      cert: fs.readFileSync(path.resolve(process.env.CERT_PATH, 'cert.pem'))
+    }
+  } : {}
 }
