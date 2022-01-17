@@ -1,16 +1,22 @@
 <template>
-  <div class="module markdown-text" 
+  <div
+    class="module markdown-text"
     v-html="convertedText"
-    :style="`text-align: ${align}`"></div>
+    :style="`text-align: ${align}`"
+  ></div>
 </template>
 
 <script>
-const showdown = require('showdown');
-const converter = new showdown.Converter();
+const showdown = require("showdown");
+const converter = new showdown.Converter({
+  strikethrough: true,
+  emoji: true,
+  openLinksInNewWindow: true
+});
 export default {
-  name: 'MarkdownText',
+  name: "MarkdownText",
   props: {
-    data: Object
+    data: Object,
   },
   computed: {
     convertedText() {
@@ -23,14 +29,14 @@ export default {
     },
     align() {
       return this.data?.fields?.align;
-    }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
 @import "assets/css/variables";
-@import 'assets/css/placeholder.scss';
+@import "assets/css/placeholder.scss";
 
 .markdown-text {
   ul {
