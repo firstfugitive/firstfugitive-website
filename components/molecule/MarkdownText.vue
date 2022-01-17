@@ -14,7 +14,9 @@ export default {
   },
   computed: {
     convertedText() {
-      return converter.makeHtml(this.text);
+      let convertedText = converter.makeHtml(this.text);
+      let convertedTextLineBreaksToBrTags = convertedText.replace(/\n/gi, "<br>");
+      return convertedTextLineBreaksToBrTags;
     },
     text() {
       return this.data?.fields?.text;
