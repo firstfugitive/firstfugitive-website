@@ -16,7 +16,7 @@ var filesFound = checkFileExists(process.env.CERT_PATH+'privkey.pem');
 
 export default {
   env: {
-    CTF_PREVIEW: 'true', /* process.env.PREVIEW === 'true' */
+    CTF_PREVIEW: process.env.ENVIRONMENT !== 'prod',
   },
 
   generate: {
