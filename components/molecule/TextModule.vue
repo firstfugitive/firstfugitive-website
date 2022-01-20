@@ -1,15 +1,17 @@
 <template>
-  <div 
-    :class="['module text-module', {'text-module--big': big}, {'text-module--bold': bold}, {'text-module--gotham': gotham}]"
-    :style="`text-align: ${align}`">
-    {{ text }}
-  </div>
+  <base-text class="module text-module"
+    :big="big"
+    :bold="bold"
+    :gotham="gotham"
+    :align="align"
+    v-if="text"
+    :text="text"/>
 </template>
 
 <script>
-import MarkdownText from './MarkdownText.vue';
+import BaseText from '../atom/BaseText.vue';
 export default {
-  components: { MarkdownText },
+  components: { BaseText },
   name: "TextModule",
   props: {
     data: Object,

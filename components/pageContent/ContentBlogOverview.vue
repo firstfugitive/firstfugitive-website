@@ -2,10 +2,13 @@
   <div>
     <page-header :data="header"></page-header>
 
-    <div class="content-blog-overview__intro"
-      v-if="headline">
-      {{ headline }}
-    </div>
+    <base-text class="content-blog-overview__intro"
+      :big="true"
+      :bold="true"
+      :gotham="true"
+      v-if="headline"
+      :text="headline"/>
+    
     <div class="content-blog-overview__blogs">
       <blog-teaser
         v-for="(item, index) in items"
@@ -32,10 +35,11 @@ import { getUrlFromPage } from '../../assets/js/Util.js';
 import PageConfigMixin from '../../assets/js/PageConfigMixin.js';
 import PageHeader from '../../components/organism/PageHeader.vue'
 import PageFooter from '../../components/organism/PageFooter.vue'
+import BaseText from '../atom/BaseText.vue';
 
 export default {
   name: "ContentBlogOverview",
-  components: { ImageFullSize, BlogTeaser, PageHeader, PageFooter },
+  components: { ImageFullSize, BlogTeaser, PageHeader, PageFooter, BaseText },
   mixins: [PageConfigMixin],
   props: {
     data: {},
