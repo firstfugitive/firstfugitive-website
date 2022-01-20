@@ -17,10 +17,12 @@
 <script>
 import BaseButton from '../atom/BaseButton.vue';
 import { getUrlFromPage } from '../../assets/js/Util.js';
+import PageConfigMixin from '../../assets/js/PageConfigMixin.js';
 
 export default {
-  components: { BaseButton },
   name: "ContentEntry",
+  components: { BaseButton },
+  mixins: [PageConfigMixin],
   props: {
     data: {},
   },

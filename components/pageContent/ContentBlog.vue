@@ -1,5 +1,7 @@
 <template>
   <div>
+    <page-header :data="header"></page-header>
+
     <image-full-size
       :data="data"
     >
@@ -16,15 +18,22 @@
       :key="`${item.contentType}_${item.sys.id}`"
       :contentTypeId="item.sys.id"
     />
+
+    <page-footer :data="footer"></page-footer>
   </div>
 </template>
 
 <script>
 import ImageFullSize from '../molecule/ImageFullSize.vue';
 import { formatDate } from '../../assets/js/Util.js';
+import PageConfigMixin from '../../assets/js/PageConfigMixin.js';
+import PageHeader from '../../components/organism/PageHeader.vue'
+import PageFooter from '../../components/organism/PageFooter.vue'
+
 export default {
-  components: { ImageFullSize },
   name: "ContentBlog",
+  components: { ImageFullSize, PageHeader, PageFooter },
+  mixins: [PageConfigMixin],
   props: {
     data: {},
   },

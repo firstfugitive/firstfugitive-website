@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div class="content-blog-overview__intro">
-      Read through some blogs
+    <page-header :data="header"></page-header>
+
+    <div class="content-blog-overview__intro"
+      v-if="headline">
+      {{ headline }}
     </div>
     <div class="content-blog-overview__blogs">
       <blog-teaser
@@ -16,6 +19,8 @@
       :key="`${item.contentType}_${item.sys.id}`"
       :contentTypeId="item.sys.id"
     />
+    
+    <page-footer :data="footer"></page-footer>
   </div>
 </template>
 
@@ -24,9 +29,14 @@ import ImageFullSize from '../molecule/ImageFullSize.vue';
 import BlogTeaser from '../molecule/BlogTeaser.vue';
 import BlogService from '../../assets/js/BlogService.js';
 import { getUrlFromPage } from '../../assets/js/Util.js';
+import PageConfigMixin from '../../assets/js/PageConfigMixin.js';
+import PageHeader from '../../components/organism/PageHeader.vue'
+import PageFooter from '../../components/organism/PageFooter.vue'
+
 export default {
-  components: { ImageFullSize, BlogTeaser },
   name: "ContentBlogOverview",
+  components: { ImageFullSize, BlogTeaser, PageHeader, PageFooter },
+  mixins: [PageConfigMixin],
   props: {
     data: {},
   },
@@ -65,6 +75,9 @@ export default {
           contentType: i?.sys?.contentType?.sys?.id
       }));
     },
+    headline() {
+      return this.data?.fields?.headline;
+    }
   },
 };
 </script>

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <page-header :data="header"></page-header>
+
     <component
       v-for="item in content"
 	    :is="item.contentType"
@@ -7,12 +9,20 @@
       :key="`${item.contentType}_${item.sys.id}`"
       :contentTypeId="item.sys.id"
     />
+    
+    <page-footer :data="footer"></page-footer>
   </div>
 </template>
 
 <script>
+import PageConfigMixin from '../../assets/js/PageConfigMixin.js';
+import PageHeader from '../../components/organism/PageHeader.vue'
+import PageFooter from '../../components/organism/PageFooter.vue'
+
 export default {
   name: "ContentHome",
+  components: { PageHeader, PageFooter },
+  mixins: [PageConfigMixin],
   props: {
     data: {},
   },

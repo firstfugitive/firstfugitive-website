@@ -3,6 +3,7 @@
     <component
       :is="contentType"
       :data="pageContent"
+      :standardPageConfig="standardPageConfig"
     />
   </div>
 </template>
@@ -38,10 +39,17 @@ export default {
       console.info('SLUG', slug);
     }
 
+    //fetch page
     let pageObject = await client.getEntries({
       content_type: 'page',
       /*'fields.urlSubfolder.fields.path': urlSubfolder,*/
       'fields.slug': slug,
+      include: 6
+    }).then((response) => response.items[0]);
+
+    //fetch standard page configuration
+    let standardPageConfig = await client.getEntries({
+      content_type: 'standardPageConfig',
       include: 6
     }).then((response) => response.items[0]);
 
@@ -55,7 +63,8 @@ export default {
     return {
       pageObject,
       slug,
-      urlSubfolder
+      urlSubfolder,
+      standardPageConfig
     };
   },
   computed: {
