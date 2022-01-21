@@ -82,16 +82,6 @@ export default {
         return undefined;
       }
       return this.pageObject.fields.content;
-      if (!this.pageObject?.fields?.content) {
-        return [];
-      }
-      return Object.values(this.pageObject?.fields?.content)
-        .filter(i => i instanceof Object)
-        .flat()
-        .map(i => ({
-          ...i,
-          contentType: i?.sys?.contentType?.sys?.id
-      }));
     },
     contentType() {
       return this.pageContent?.sys?.contentType?.sys?.id;
@@ -99,12 +89,18 @@ export default {
     openGraphTags() {
       const ogTitle = this.pageTitle;
       const ogDescription = this.pageObject?.fields?.openGraphDescription ? 
-        this.pageObject?.fields?.openGraphDescription : this.standardPageConfig?.fields.openGraphStandardDescription;
+        this.pageObject.fields.openGraphDescription : this.standardPageConfig?.fields?.openGraphStandardDescription;
       //TODO: maybe implement logic to pull image from blog if it's a blog
       const ogImage = this.pageObject?.fields?.openGraphImage ? 
-        this.pageObject?.fields?.openGraphImage : this.standardPageConfig?.fields.openGraphStandardImage;
-      const ogAdditionals = undefined//this.fields.additionalOpenGraphTags;
+        this.pageObject.fields.openGraphImage : this.standardPageConfig?.fields?.openGraphStandardImage;
 
+      let ogAdditionals = {}
+      if(this.pageObject?.fields?.openGraphAdditionals) {
+        ogAdditionals = this.pageObject.fields.openGraphAdditionals;
+      } else if(this.standardPageConfig?.fields?.openGraphStandardAdditionals) {
+        ogAdditionals = this.standardPageConfig.fields.openGraphStandardAdditionals;
+      }
+      
       //disable if no option is set
       if (!ogTitle && !ogDescription && !ogImage && (!ogAdditionals || !ogAdditionals.length > 0))
         return [];
@@ -128,14 +124,19 @@ export default {
       });
 
       //tags added by editors
+      
       if (ogAdditionals) {
+        let ogAdditionalsList = [];
+        for (let [key, value] of Object.entries(ogAdditionals)) {
+          ogAdditionalsList.push({
+            hid: key,
+            property: key,
+            content: value
+          })
+        }
         ogTags = [
           ...ogTags,
-          ...(ogAdditionals.map(e => ({
-            hid: e.key,
-            property: e.key,
-            content: e.value
-          })))
+          ...ogAdditionalsList
         ]
       }
 
