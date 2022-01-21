@@ -19,9 +19,12 @@ export default {
   name: "Page",
   head() {
     return {
-      title: `${this.pageTitle} | Ben Jacobsen`,
+      title: this.pageTitle,
+      meta: [
+        ...this.openGraphTags
+      ],
       htmlAttrs: {
-        lang: "en",
+        lang: "de",
       },
     };
   },
@@ -29,7 +32,7 @@ export default {
     const route = ctx.route.path;
     let pathParts = route.split('/').filter(e => e !== '');
     let slug = pathParts.reverse()[0];
-    let urlSubfolder = '/' + route.substr(0, route.lastIndexOf(slug));
+    let urlSubfolder = route.substr(0, route.lastIndexOf(slug));
     slug = slug || 'index';
 
     if (true/*ctx.isDev*/) {
@@ -69,7 +72,9 @@ export default {
   },
   computed: {
     pageTitle() {
-      return this.pageObject?.fields?.pageTitle;
+      let pageTitle = this.pageObject?.fields?.pageTitle;
+      if(!pageTitle) return 'Ben Jacobsen';
+      return `${pageTitle} | Ben Jacobsen`;
     },
 
     pageContent() {
@@ -90,7 +95,52 @@ export default {
     },
     contentType() {
       return this.pageContent?.sys?.contentType?.sys?.id;
-    }
+    },
+    openGraphTags() {
+      const ogTitle = this.pageTitle;
+      const ogDescription = this.pageObject?.fields?.openGraphDescription ? 
+        this.pageObject?.fields?.openGraphDescription : this.standardPageConfig?.fields.openGraphStandardDescription;
+      //TODO: maybe implement logic to pull image from blog if it's a blog
+      const ogImage = this.pageObject?.fields?.openGraphImage ? 
+        this.pageObject?.fields?.openGraphImage : this.standardPageConfig?.fields.openGraphStandardImage;
+      const ogAdditionals = undefined//this.fields.additionalOpenGraphTags;
+
+      //disable if no option is set
+      if (!ogTitle && !ogDescription && !ogImage && (!ogAdditionals || !ogAdditionals.length > 0))
+        return [];
+
+      let ogTags = [
+        //these tags are always available
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'benjacobsen.de' },
+        {
+          property: 'og:url',
+          content: `https://www.benjacobsen.com${this.urlSubfolder}${this.slug}/`
+        }
+      ];
+
+      //these tags may or may not be added, even though that might cause og tags not to be complete
+      if (ogTitle) ogTags.push({ property: 'og:title', content: ogTitle });
+      if (ogDescription) ogTags.push({ property: 'og:description', content: ogDescription });
+      if (ogImage?.fields?.file?.url) ogTags.push({
+        property: 'og:image',
+        content: 'https:' + ogImage.fields.file.url
+      });
+
+      //tags added by editors
+      if (ogAdditionals) {
+        ogTags = [
+          ...ogTags,
+          ...(ogAdditionals.map(e => ({
+            hid: e.key,
+            property: e.key,
+            content: e.value
+          })))
+        ]
+      }
+
+      return ogTags;
+    },
   }
 };
 </script>

@@ -92,6 +92,7 @@ export default {
 
 .content-blog-overview {
   &__intro {
+    @extend %module-spacing;
     margin-top: var(--height-header);
     margin-bottom: 4rem;
     text-align: center;

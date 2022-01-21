@@ -5,12 +5,5 @@
 @import "hooper/dist/hooper.css";
 
 .module {
-  margin: 3rem auto;
-  max-width: var(--module-max-content-width);
-
-  
-  @include mb-up($desktop-min) {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-  }
+  @extend %module-spacing;
 }
