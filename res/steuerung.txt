@@ -1,0 +1,19 @@
+yarn nuxt -> DEV
+
+
+***
+PROD
+***
+cd /var/www/firstfugitive-website/ && sudo git pull && sudo yarn nuxt build -n && pm2 restart npm // && sudo yarn nuxt start
+pm2 start npm -- start
+
+**additional:
+pm2 ls
+pm2 stop/restart/delete npm
+
+
+***
+nginx
+***
+sudo service nginx restart
+sudo service nginx status
