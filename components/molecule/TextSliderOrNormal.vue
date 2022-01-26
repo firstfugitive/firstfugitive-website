@@ -5,8 +5,8 @@
       :bold="bold"
       :gotham="gotham"
       :align="align"
-      v-if="text && !isSlider"
-      :text="text"
+      v-if="processedText && !isSlider"
+      :text="processedText"
     />
     <text-slider
       :big="big"
@@ -24,7 +24,6 @@
 <script>
 import BaseText from "../atom/BaseText.vue";
 import TextSlider from "./TextSlider.vue";
-import { searchTextForSlider } from "../../assets/js/Util.js";
 
 export default {
   components: { BaseText, TextSlider },
@@ -42,6 +41,7 @@ export default {
       beforeSliderText: String,
       sliderItems: Array,
       afterSliderText: String,
+      processedText: undefined
     };
   },
   methods: {
@@ -59,8 +59,10 @@ export default {
           this.beforeSliderText = splitText[0];
           this.afterSliderText = splitText[2];
           this.sliderItems = probablySliderItems;
+          return;
         }
       }
+      this.processedText = this.text;
     },
   },
   beforeMount() {
