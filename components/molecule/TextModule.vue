@@ -1,20 +1,31 @@
 <template>
-  <base-text class="module text-module"
+  <text-slider-or-normal
+    class="module text-module"
     :big="big"
     :bold="bold"
     :gotham="gotham"
     :align="align"
-    v-if="text"
-    :text="text"/>
+    :text="text"
+  />
 </template>
 
 <script>
-import BaseText from '../atom/BaseText.vue';
+import BaseText from "../atom/BaseText.vue";
+import TextSlider from "./TextSlider.vue";
+import TextSliderOrNormal from './TextSliderOrNormal.vue';
 export default {
-  components: { BaseText },
+  components: { BaseText, TextSlider, TextSliderOrNormal },
   name: "TextModule",
   props: {
     data: Object,
+  },
+  data() {
+    return {
+      isSlider: false,
+      beforeSliderText: String,
+      sliderItems: Array,
+      afterSliderText: String,
+    };
   },
   computed: {
     text() {
@@ -39,7 +50,7 @@ export default {
 
 <style lang="scss" >
 @import "assets/css/variables";
-@import 'assets/css/placeholder.scss';
+@import "assets/css/placeholder.scss";
 
 .text-module {
   &--big {
@@ -53,6 +64,5 @@ export default {
   &--gotham {
     @extend %fontGotham;
   }
-
 }
 </style>

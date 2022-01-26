@@ -8,7 +8,16 @@
       :contentTypeId="item.sys.id"
     >
       <div class="content-entry__button">
-        <base-button :url="link" :text="linkText"></base-button>
+        <base-button :url="link" >
+          <text-slider-or-normal
+            :big="false"
+            :bold="false"
+            :gotham="false"
+            :align="'center'"
+            v-if="linkText"
+            :text="linkText"
+          />
+        </base-button>
       </div>
     </component>
   </div>
@@ -18,10 +27,11 @@
 import BaseButton from '../atom/BaseButton.vue';
 import { getUrlFromPage } from '../../assets/js/Util.js';
 import PageConfigMixin from '../../assets/js/PageConfigMixin.js';
+import TextSliderOrNormal from '../molecule/TextSliderOrNormal.vue';
 
 export default {
   name: "ContentEntry",
-  components: { BaseButton },
+  components: { BaseButton, TextSliderOrNormal },
   mixins: [PageConfigMixin],
   props: {
     data: {},

@@ -7,10 +7,7 @@
       <header class="">
         <ul class="page-header__elements">
           <li>
-            <base-link 
-              :url="linkHome" 
-              :text=title
-            ></base-link>
+            <base-link :url="linkHome">{{ title }}</base-link>
           </li>
         </ul>
         <div 
@@ -33,8 +30,7 @@
               :key="`navElem_${i}`">
               <base-link 
                 :url="getNavElementUrl(elem)" 
-                :text="getNavElementUrlText(elem)"
-                :darkStyle="true"></base-link>
+                :darkStyle="true">{{getNavElementUrlText(elem)}}</base-link>
             </li>
           </ul>
         </div>

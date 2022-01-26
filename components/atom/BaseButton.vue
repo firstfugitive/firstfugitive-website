@@ -1,6 +1,6 @@
 <template>
   <div class="base-button">
-    <base-link class="link" :url="url" :text="text"></base-link>
+    <base-link class="link" :url="url"><slot></slot></base-link>
   </div>
 </template>
 
@@ -11,10 +11,6 @@ export default {
   name: "BaseButton",
   props: {
     url: {
-      type: String,
-      required: true,
-    },
-    text: {
       type: String,
       required: true,
     },

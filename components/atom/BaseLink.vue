@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :class="['base-link', {'base-link--dark': darkStyle}]" :to="url">{{ text }}</nuxt-link>
+  <nuxt-link :class="['base-link', {'base-link--dark': darkStyle}]" :to="url"><slot></slot></nuxt-link>
 </template>
 
 <script>
@@ -7,10 +7,6 @@ export default {
   name: "BaseLink",
   props: {
     url: {
-      type: String,
-      required: true,
-    },
-    text: {
       type: String,
       required: true,
     },
