@@ -65,7 +65,7 @@ export default {
       this.processedText = this.text;
     },
   },
-  beforeMount() {
+  created() {
     this.searchTextForSlider();
   },
 };
