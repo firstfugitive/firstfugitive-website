@@ -35,7 +35,7 @@ export default {
     let urlSubfolder = route.substr(0, route.lastIndexOf(slug));
     slug = slug || 'index';
 
-    if (true/*ctx.isDev*/) {
+    if (ctx.isDev) {
       console.info('ROUTE', route);
       console.info('NAME', ctx.route.name);
       console.info('URL-SUBFOLDER', urlSubfolder);

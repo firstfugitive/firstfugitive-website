@@ -32,7 +32,6 @@ export default {
         mouseY <= this.cData.y + this.cData.height
       ) {
         // if inside, display the shape's message
-        console.log("Click registered");
         
         //make invisible
         //this.canvas.getContext("2d").globalAlpha = 0;
@@ -64,7 +63,6 @@ export default {
         // this.c.globalAlpha = Math.random();
         this.cData.dy = -this.cData.dy;
       }
-      console.log("countRefresh");
       this.cData.x += this.cData.dx;
       this.cData.y += this.cData.dy;
 
@@ -75,15 +73,10 @@ export default {
   mounted() {
     this.canvas = document.querySelector("canvas");
 
-    console.log("canvas", this.canvas)
-
     this.canvas.height = window.innerHeight;
     this.canvas.width = window.innerWidth;
 
     this.c = this.canvas.getContext("2d");
-
-    
-    console.log("context", this.c)
 
     this.cData = {
       x: 0,
