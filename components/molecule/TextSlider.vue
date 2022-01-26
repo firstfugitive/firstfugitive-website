@@ -119,19 +119,19 @@ export default {
   }
 
   &.slider-items-2 div:first-child {
-    animation: slide-2 4s linear infinite;
+    animation: slide-2 5s linear infinite;
   }
 
   &.slider-items-3 div:first-child {
-    animation: slide-3 5s linear infinite;
+    animation: slide-3 8s linear infinite;
   }
 
   &.slider-items-4 div:first-child {
-    animation: slide-4 7s linear infinite;
+    animation: slide-4 10s linear infinite;
   }
 
   &.slider-items-5 div:first-child {
-    animation: slide-5 9s linear infinite;
+    animation: slide-5 12s linear infinite;
   }
 
 }
