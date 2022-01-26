@@ -56,7 +56,6 @@ export default {
   methods: {
     activateMenu(e) {
       e.preventDefault();
-      console.log('Hello');
       this.menuActive = !this.menuActive;
     },
     getNavElementUrl(element) {
