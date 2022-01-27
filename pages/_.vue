@@ -129,7 +129,7 @@ export default {
         { property: 'og:site_name', content: 'benjacobsen.de' },
         {
           property: 'og:url',
-          content: `https://www.benjacobsen.com${this.urlSubfolder}${this.slug}/`
+          content: `https://www.benjacobsen.com${this.urlSubfolder}${this.slug === "index" ? "" : this.slug}/`
         }
       ];
 
