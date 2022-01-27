@@ -37,11 +37,7 @@ export default {
       script: [
         {
           type: "application/ld+json",
-          innerHTML: `{
-            "@context": "https://schema.org/",
-            "@type": "Article",
-            "name": "${this.pageTitle}"
-          }`
+          innerHTML: this.jsonLdForScriptTag
         }
       ]
     };
@@ -104,13 +100,17 @@ export default {
     contentType() {
       return this.pageContent?.sys?.contentType?.sys?.id;
     },
+    seoImage() {
+      //TODO: maybe implement logic to pull image from blog if it's a blog
+      return this.pageObject?.fields?.openGraphImage ? 
+        this.pageObject.fields.openGraphImage : this.standardPageConfig?.fields?.openGraphStandardImage;
+    },
+    seoDescription() {
+      return this.pageObject?.fields?.openGraphDescription ? 
+        this.pageObject.fields.openGraphDescription : this.standardPageConfig?.fields?.openGraphStandardDescription;
+    },
     openGraphTagsAndMicrodata() {
       const ogTitle = this.pageTitle;
-      const ogDescription = this.pageObject?.fields?.openGraphDescription ? 
-        this.pageObject.fields.openGraphDescription : this.standardPageConfig?.fields?.openGraphStandardDescription;
-      //TODO: maybe implement logic to pull image from blog if it's a blog
-      const ogImage = this.pageObject?.fields?.openGraphImage ? 
-        this.pageObject.fields.openGraphImage : this.standardPageConfig?.fields?.openGraphStandardImage;
 
       let ogAdditionals = {}
       if(this.pageObject?.fields?.openGraphAdditionals) {
@@ -120,7 +120,7 @@ export default {
       }
       
       //disable if no option is set
-      if (!ogTitle && !ogDescription && !ogImage && (!ogAdditionals || !ogAdditionals.length > 0))
+      if (!ogTitle && !this.seoDescription && !this.seoImage && (!ogAdditionals || !ogAdditionals.length > 0))
         return [];
 
       let ogTags = [
@@ -135,13 +135,13 @@ export default {
 
       //these tags may or may not be added, even though that might cause og tags not to be complete
       if (ogTitle) ogTags.push({ property: 'og:title', itemprop: 'name', content: ogTitle });
-      if (ogDescription) {
-        ogTags.push({ property: 'og:description', itemprop: 'description', content: ogDescription });
-        ogTags.push({ name: 'description', content: ogDescription })
+      if (this.seoDescription) {
+        ogTags.push({ property: 'og:description', itemprop: 'description', content: this.seoDescription });
+        ogTags.push({ name: 'description', content: this.seoDescription })
       }
-      if (ogImage?.fields?.file?.url) ogTags.push({
+      if (this.seoImage?.fields?.file?.url) ogTags.push({
         property: 'og:image',
-        content: 'https:' + ogImage.fields.file.url
+        content: 'https:' + this.seoImage.fields.file.url
       });
 
       //tags added by editors
@@ -164,18 +164,31 @@ export default {
       return ogTags;
     },
     microdataForLinkTag() {
-      const ogImage = this.pageObject?.fields?.openGraphImage ? 
-        this.pageObject.fields.openGraphImage : this.standardPageConfig?.fields?.openGraphStandardImage;
-
-      if (ogImage?.fields?.file?.url) {
+      if (this.seoImage?.fields?.file?.url) {
         return [
           {
             itemprop: 'image',
-            href: ogImage.fields.file.url
+            href: this.seoImage.fields.file.url
           }
         ]
       };
       return []
+    },
+    jsonLdForScriptTag() {
+      return `{
+        "@context": "https://schema.org/",
+        "@type": "Article",
+        "name": "${this.pageTitle}",
+        "headline": "${this.seoDescription}",
+        "image": [
+          "${this.seoImage?.fields?.file?.url ? this.seoImage.fields.file.url : ""}"
+        ],
+        "author": [{
+          "@type": "Person",
+          "name": "Ben Jacobsen",
+          "url": "https://benjacobsen.de"
+        }]
+      }`
     }
   }
 };
