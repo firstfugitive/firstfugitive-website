@@ -137,7 +137,7 @@ export default {
       if (ogTitle) ogTags.push({ property: 'og:title', itemprop: 'name', content: ogTitle });
       if (this.seoDescription) {
         ogTags.push({ property: 'og:description', itemprop: 'description', content: this.seoDescription });
-        ogTags.push({ name: 'description', content: this.seoDescription })
+        ogTags.push({ hid: 'description', name: 'description', content: this.seoDescription })
       }
       if (this.seoImage?.fields?.file?.url) ogTags.push({
         property: 'og:image',
