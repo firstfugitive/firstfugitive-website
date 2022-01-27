@@ -180,14 +180,12 @@ export default {
         "@type": "Article",
         "name": "${this.pageTitle}",
         "headline": "${this.seoDescription}",
-        "image": [
-          "${this.seoImage?.fields?.file?.url ? this.seoImage.fields.file.url : ""}"
-        ],
-        "author": [{
+        "image": "${this.seoImage?.fields?.file?.url ? this.seoImage.fields.file.url : ""}",
+        "author": {
           "@type": "Person",
           "name": "Ben Jacobsen",
           "url": "https://benjacobsen.de"
-        }]
+        }
       }`
     }
   }
