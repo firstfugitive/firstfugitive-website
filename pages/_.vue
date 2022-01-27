@@ -25,7 +25,7 @@ export default {
       ],
       headAttrs: {
         itemscope: true,
-        itemtype: 'http://schema.org/WebSite'
+        itemtype: 'http://schema.org/Article'
       },
       htmlAttrs: {
         lang: "de",
