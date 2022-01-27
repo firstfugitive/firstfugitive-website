@@ -39,7 +39,7 @@ export default {
           type: "application/ld+json",
           innerHTML: `{
             "@context": "https://schema.org/",
-            "@type": "WebSite",
+            "@type": "Article",
             "name": "${this.pageTitle}"
           }`
         }
