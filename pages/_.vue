@@ -32,6 +32,17 @@ export default {
       },
       link: [
         ...this.microdataForLinkTag
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          type: "application/ld+json",
+          innerHTML: `{
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            "name": "${this.pageTitle}"
+          }`
+        }
       ]
     };
   },
