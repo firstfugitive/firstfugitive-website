@@ -21,11 +21,18 @@ export default {
     return {
       title: this.pageTitle,
       meta: [
-        ...this.openGraphTags
+        ...this.openGraphTagsAndMicrodata
       ],
+      headAttrs: {
+        itemscope: true,
+        itemtype: 'http://schema.org/WebSite'
+      },
       htmlAttrs: {
         lang: "de",
       },
+      link: [
+        ...this.microdataForLinkTag
+      ]
     };
   },
   async asyncData(ctx) {
@@ -86,7 +93,7 @@ export default {
     contentType() {
       return this.pageContent?.sys?.contentType?.sys?.id;
     },
-    openGraphTags() {
+    openGraphTagsAndMicrodata() {
       const ogTitle = this.pageTitle;
       const ogDescription = this.pageObject?.fields?.openGraphDescription ? 
         this.pageObject.fields.openGraphDescription : this.standardPageConfig?.fields?.openGraphStandardDescription;
@@ -116,8 +123,11 @@ export default {
       ];
 
       //these tags may or may not be added, even though that might cause og tags not to be complete
-      if (ogTitle) ogTags.push({ property: 'og:title', content: ogTitle });
-      if (ogDescription) ogTags.push({ property: 'og:description', content: ogDescription });
+      if (ogTitle) ogTags.push({ property: 'og:title', itemprop: 'name', content: ogTitle });
+      if (ogDescription) {
+        ogTags.push({ property: 'og:description', itemprop: 'description', content: ogDescription });
+        ogTags.push({ name: 'description', content: ogDescription })
+      }
       if (ogImage?.fields?.file?.url) ogTags.push({
         property: 'og:image',
         content: 'https:' + ogImage.fields.file.url
@@ -142,6 +152,20 @@ export default {
 
       return ogTags;
     },
+    microdataForLinkTag() {
+      const ogImage = this.pageObject?.fields?.openGraphImage ? 
+        this.pageObject.fields.openGraphImage : this.standardPageConfig?.fields?.openGraphStandardImage;
+
+      if (ogImage?.fields?.file?.url) {
+        return [
+          {
+            itemprop: 'image',
+            href: ogImage.fields.file.url
+          }
+        ]
+      };
+      return []
+    }
   }
 };
 </script>

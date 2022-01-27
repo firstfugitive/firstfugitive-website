@@ -63,7 +63,10 @@ export default {
       background-color: black;
     }
   }
+}
 
-  
+.hooper-liveregion.hooper-sr-only {
+  visibility: hidden;
+  display: none;
 }
 </style>

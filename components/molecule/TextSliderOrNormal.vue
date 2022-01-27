@@ -56,8 +56,8 @@ export default {
         if (probablySliderItems.length > 1) {
           //must be a slider
           this.isSlider = true;
-          this.beforeSliderText = splitText[0];
-          this.afterSliderText = splitText[2];
+          this.beforeSliderText = splitText[0] === " " ? undefined : splitText[0];
+          this.afterSliderText = splitText[2] === " " ? undefined : splitText[2];
           this.sliderItems = probablySliderItems;
           return;
         }
