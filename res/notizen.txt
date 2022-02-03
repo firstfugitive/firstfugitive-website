@@ -13,6 +13,7 @@ sudo apt install yarn
 node-Probleme mit update gelöst
 https://github.com/nodesource/distributions
 *****
+curl -fsSL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
@@ -22,3 +23,11 @@ zusätzliche Pakete auf server nötig
 *****
 sudo apt install nginx
 npm install pm2 -g
+
+
+*****
+node läuft ewig weiter und blockiert :3000
+*****
+sudo lsof -i tcp:3000
+sudo kill -9 [pid] (didn't work)
+sudo killall node (worked!)

@@ -15,5 +15,7 @@ pm2 stop/restart/delete npm
 ***
 nginx
 ***
+sudo service nginx start
 sudo service nginx restart
+sudo service nginx stop
 sudo service nginx status
