@@ -56,6 +56,7 @@ export default {
     text-decoration: none;
   }
   &:hover {
+    @extend %boxShadowHover;
   }
   &__image {
     display: flex;
