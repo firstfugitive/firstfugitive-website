@@ -1,11 +1,15 @@
-yarn nuxt -> DEV
+***
+DEV
+***
+yarn nuxt
 
 
 ***
 PROD
 ***
-cd /var/www/firstfugitive-website/ && sudo git pull && sudo yarn nuxt build -n && pm2 restart npm // && sudo yarn nuxt start
-pm2 start npm -- start
+sudo yarn nuxt build -n && sudo yarn nuxt start
+sudo pm2 start npm -- start
+cd /var/www/firstfugitive-website/ && sudo git pull && sudo yarn nuxt build -n && sudo pm2 restart npm
 
 **additional:
 pm2 ls
